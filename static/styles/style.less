@@ -1,0 +1,531 @@
+   
+
+@import "animate.less";
+
+
+/* Author:Josip Haboić */
+/* Last update: */
+/* 23:17 23.7.2017. */
+/* 23:16 25.7.2017. */
+
+
+
+@sz-w:466px;
+@sz-h:214px;
+@court-scale:1;
+
+@panel-background:fadeout(#222222 , 0%);
+@color-1:#ffd500;
+
+.white-border-Mixin { border:white solid 1px; }
+
+.mini-scale-Mixin { transform:scale3d(0.75,0.75,0.75); }
+.normal-scale-Mixin { transform:scale3d(1.0,1.0,1.0); }
+.maxi-scale-Mixin { transform:scale3d(1.5,1.5,1.5); margin-top:40px; }
+
+
+
+body {
+
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	
+	font-family:Consolas;
+	
+	background-color:#111111;
+}
+
+div { margin: 0; padding: 0; }
+
+
+.container {
+	width:100%;
+	height:100%;
+	
+	.normal-scale-Mixin( );
+}
+
+
+// ==================================================================================================================================
+// TENIS COURT
+// ==================================================================================================================================
+.tenis-court {
+	position:relative;
+
+	width:@sz-w;
+	height:@sz-h;
+	margin:0 auto;
+	
+	animation:perspectiveChange-Animation 4s 0s ease-in forwards;
+	background:url('../assets/baaabce6.png');
+	box-shadow:0px 0px 24px 4px #8d4500 inset,0px 0px 6px 32px #000008;
+	
+	.white-border-Mixin( );
+}
+
+.top-right-singles-sideline  {
+	position:absolute;
+	top:0;
+	right:233px;
+
+	width:231px;
+	height:24px;
+
+	.white-border-Mixin( );
+}
+
+.top-right-singles-sideline  {
+	position:absolute;
+	top:0;
+	left:0px;
+
+	width:231px;
+	height:24px;
+
+	.white-border-Mixin( );
+}
+
+.bottom-left-singles-sideline {
+	position:absolute;
+	bottom:0;
+	left:0;
+
+	width:231px;
+	height:24px;
+
+	.white-border-Mixin( );
+}
+
+.bottom-right-singles-sideline {
+	position:absolute;
+	bottom:0;
+	left:233px;
+
+	width:231px;
+	height:24px;
+
+	.white-border-Mixin( );
+}
+
+.left-servis-field {
+	position:absolute;
+	top:26px;
+	left:0;
+
+	width:106px;
+	height:160px;
+
+	.white-border-Mixin( );
+}
+
+.right-servis-field {
+	position:absolute;
+	top:26px;
+	right:0;
+
+	width:106px;
+	height:160px;
+
+	.white-border-Mixin( );
+}
+
+.right-top-net-field {
+	position:absolute;
+	top:26px;
+	left:108px;
+
+	width:123px;
+	height:79px;
+
+	.white-border-Mixin( );
+}
+
+.left-top-net-field {
+	position:absolute;
+	top:26px;
+	right:108px;
+
+	width:123px;
+	height:79px;
+
+	.white-border-Mixin( );
+}
+
+.left-bottom-net-field {
+	position:absolute;
+	bottom:26px;
+	left:108px;
+
+	width:123px;
+	height:79px;
+
+	.white-border-Mixin( );
+}
+
+.right-bottom-net-field {
+	position:absolute;
+	right:108px;
+	bottom:26px;
+
+	width:123px;
+	height:79px;
+
+	.white-border-Mixin( );
+}
+
+.bottom-left-singles-sideline {
+	position:absolute;
+	top:0;
+	left:0;
+
+	width:231px;
+	height:24px;
+
+	.white-border-Mixin( );
+}
+
+.tick {
+	width: 10px;
+	
+	border-width:0; border-top: white solid 1px;
+}
+
+
+.tick-left {
+	position:absolute;
+	top:106px;
+	left:1px;
+
+	.white-border-Mixin( );
+}
+
+.tick-right {
+	position:absolute;
+	top:106px;
+	right:1px;
+
+	.white-border-Mixin( );
+}
+
+.net {
+	position:absolute;
+	z-index:100;
+	top:-12px;
+	left:230px;
+
+	width:1px;
+	height:234px;
+
+	transform:rotateY(25deg);
+
+	border:none;
+	background:#AAA;
+	box-shadow:4px 0 2px 4px fadeout(#111111, 25%),8px 0 2px 8px fadeout(#000000, 75%);
+}
+
+
+// ==================================================================================================================================
+// OVERLAY
+// ==================================================================================================================================
+.start-overlay {
+	position:absolute;
+
+	display:flex;
+
+	animation:inflateFromCenter-v1-Animation 1s cubic-bezier(0.68, -0.55, 0.27, 1.55), fadeOut 1s 4s forwards;
+	
+	background:@panel-background;
+	box-shadow:0 8px 8px 2px #111;
+	
+	align-items:center;
+	justify-content:center;
+	
+	width:45%;
+	height:50%;
+}
+
+.overlay-left {
+	top:25%;
+	left:2%;
+}
+
+.overlay-right {
+	bottom:25%;
+	right:2%;
+}
+
+.player-name {
+	display:flex;
+
+	color:#eaeaea;
+	
+	font-size:1.25em;
+
+	justify-content:center;
+	align-items:center;
+	
+	color:#FFFFFF;
+	text-shadow:0 8px 8px #FFFFFF;
+}
+
+
+// ==================================================================================================================================
+// INFO PANEL
+// ==================================================================================================================================
+.info-panel {
+	position:absolute;
+	z-index:200;
+	top:24%;
+	left:245px;
+
+	flex-direction:column;
+
+	width:45%;
+	height:50%;
+	
+	animation:fadeOut 1s 4s forwards;
+
+	background:@panel-background;
+	box-shadow:0 12px 7px 0px #111;
+
+	align-items:center;
+	justify-content:center;
+}
+
+.info-panel-header {
+	display:flex;
+
+	width:100%;
+	height:50%;
+}
+
+.info-panel-header-content {
+	width:100%;
+	height:100%;
+}
+
+.info-panel-header-who {
+	display:flex;
+
+	width:100%;
+	height:50%;
+
+	background:#ccc;
+	
+	color:#000000;
+	background:#FFF;
+	
+	align-items:center;
+	justify-content:center;
+}
+
+.info-panel-header-poen {
+	display:flex;
+
+	width:100%;
+	height:50%;
+
+	color:#ffffff;
+	
+	border-bottom:1px solid #000000;
+	
+	background:#222222;
+
+	align-items:center;
+	justify-content:center;
+	
+}
+
+.info-panel-header-flag {
+
+	width:50%;
+	height:100%;
+	
+	border-left:1px solid #222222;
+	
+	.serbian-flag-Mixin( );
+}
+
+.info-panel-body {
+	display:flex;
+
+	width:100%;
+	height:60%;
+
+	background:@panel-background;
+
+	align-items:center;
+	justify-content:center;
+}
+
+.info-panel-body-content {
+	font-size:1.5em;
+}
+
+.score-info {
+	display:flex;
+
+	justify-content:space-around;
+	align-items:center;
+}
+
+.score-symbol {
+}
+
+.score-first-number {
+
+	color:#FFFFFF;
+
+	.score-symbol( );
+}
+.score-divider {
+	margin:0 8px;
+	color:#FFFFFF;
+
+	.score-symbol( );
+}
+.score-second-number {
+	animation:fadeIn 1s ease-out backwards;
+	animation-delay:0.2s;
+
+	color:@color-1;
+
+	.score-symbol( );
+}
+
+// ===================================================================================================================================
+.info-panel-servis {
+	position:absolute;
+	z-index:200;
+	top:26px * 1.5;
+	left:245px;
+	
+	display:flex;
+	flex-direction:column;
+
+	width:45%;
+	height:60%;
+
+	animation:fadeOut 1s 4s forwards;
+
+	align-items:center;
+	justify-content:center;
+}
+
+.info-panel-servis-body {
+	width:100%;
+	height:100%;
+}
+
+.player-serving-info {
+	width:100%;
+
+	text-align:center;
+}
+
+.arrow-red-left {
+	display:block;
+	
+	
+	width:100%;
+	height:64px;
+	
+	animation:fadeIn 2s, fadeOut 1s 2s forwards, slideOutLeft 4.5s forwards;
+	
+	background:url('../assets/arrow-red-left.png') no-repeat center;
+	background-size:contain;
+}
+
+.info-panel-body-content-servis {
+	display:flex;
+	flex-direction:column;
+
+	height:100%;
+
+	color:#FFF;
+
+	font-size:1.25em;
+
+	justify-content:center;
+	align-items:center;
+}
+
+.event-name {
+	
+	text-shadow:0 8px 4px fadeout(@color-1,0%);
+	
+	color:@color-1;
+
+	font-size:120%;
+	
+	transform:rotateZ(-90deg) translateX(-45px) translateY(35px);
+}
+
+.name-and-surname {
+	transform:rotateZ(-90deg) translateY(86px) translateX(45px);
+	text-shadow:0 8px fadeout(#777,50%);
+}
+
+.name {
+	display:inline-block;
+
+	animation:fadeIn 2s;
+
+}
+
+.name::first-letter {
+	font-size:125%;
+}
+.surname::first-letter {
+	font-size:125%;
+}
+.surname {
+	display:inline-block;
+
+	animation:fadeIn 4s;
+}
+
+
+/*
+************************************************************** Animations **********************************************************
+*/
+
+
+/*
+Custom made animations
+*/
+
+@keyframes perspectiveChange-Animation {
+	0% {
+		transform:perspective(80em) rotateX(35deg);
+	}
+	100% {
+		transform:perspective(80em) rotateX(35deg);
+	}
+}
+
+@keyframes inflateFromCenter-v1-Animation {
+	0% {
+		transform:scaleY(0%);
+	}
+	100% {
+		transform:scaleY(100%);
+	}
+}
+
+@keyframes inflateFromCenter-v2-Animation {
+	0% {
+		transform:scaleY(0%);
+	}
+	100% {
+		transform:scaleY(100%);
+	}
+}
+
+.serbian-flag-Mixin {
+	background:url('../assets/serbian-flag.png') no-repeat center;
+	background-size:cover;
+}
+
+
